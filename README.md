@@ -59,7 +59,7 @@ npm test        # unit tests for the coin and object helpers
 npm run check   # syntax check of every script
 ```
 
-To release, set the new version in `module.json` and `package.json`, add it to `CHANGELOG.md`, and push a tag such as `v1.0.1`. The workflow in `.github/workflows/release.yml` runs the tests, checks that the tag matches `module.json`, and creates the GitHub release with `module.json` and `module.zip` attached. Publishing a release from the GitHub page for a new tag works too.
+To release, set the new version in `module.json` and `package.json`, add it to `CHANGELOG.md`, and push a tag such as `v1.0.1`. The workflow in `.github/workflows/release.yml` runs the tests, checks that the tag matches `module.json`, and creates the GitHub release with `module.json` and `module.zip` attached. Publishing a release from the GitHub page for a new tag works too, and so does running the *Release* workflow by hand on `main`, which tags the version in `module.json`.
 
 ## License
 

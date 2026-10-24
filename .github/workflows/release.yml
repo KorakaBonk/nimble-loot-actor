@@ -1,12 +1,14 @@
 name: Release
 
-# Push a tag such as v1.0.0 (or publish a release for one) to build the
+# Push a tag such as v1.0.0, publish a release for one, or run this workflow
+# by hand on main (it then tags the version in module.json) to build the
 # module and attach module.json and module.zip to the GitHub release.
 on:
   push:
     tags: ['v*']
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,12 +20,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      TAG: ${{ github.event.release.tag_name || github.ref_name }}
+      TAG: ${{ github.event.release.tag_name || (github.event_name != 'workflow_dispatch' && github.ref_name) || '' }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ env.TAG }}
+          ref: ${{ env.TAG || github.ref }}
+
+      - name: Take the tag from module.json for a manual run
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          TAG="v$(jq -r .version module.json)"
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "::error::$TAG already exists; bump the version in module.json first"
+            exit 1
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
 
       - uses: actions/setup-node@v4
         with:
@@ -52,6 +64,10 @@ jobs:
         run: |
           if ! gh release view "$TAG" > /dev/null 2>&1; then
             NOTES="$(awk -v v="${TAG#v}" '$0 == "## " v {f=1; next} /^## /{f=0} f' CHANGELOG.md)"
-            gh release create "$TAG" --title "$TAG" --notes "$NOTES" --verify-tag
+            if [ "${{ github.event_name }}" = workflow_dispatch ]; then
+              gh release create "$TAG" --title "$TAG" --notes "$NOTES" --target "$GITHUB_SHA"
+            else
+              gh release create "$TAG" --title "$TAG" --notes "$NOTES" --verify-tag
+            fi
           fi
           gh release upload "$TAG" module.json module.zip --clobber
