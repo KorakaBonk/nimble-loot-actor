@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Works with Nimble Party Loot 1.0.0 and newer, its first public release.
+
 ## 1.0.0
 
 First public release.

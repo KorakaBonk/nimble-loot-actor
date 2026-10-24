@@ -29,7 +29,7 @@ As GM, the hand icon on a row gives that object to a character of your choice, a
 - **Take coins** moves the gold, silver and copper you choose into your character's purse.
 - **Split among party** shares the coins evenly between the player characters you tick. The list holds every character that is assigned to a player in *User Configuration*, and the characters of players who are online start ticked. If no player has an assigned character, every character a player owns is listed. Each coin type is divided on its own, and coins that do not divide evenly stay in the loot.
 
-If the [Nimble Party Loot](https://github.com/KorakaBonk/nimble-party-loot) module (2.1 or newer, which has the API this uses) is active, two more buttons appear: the box icon on a row moves that object (or part of a stack) into the party loot, and **Move all coins to party loot** moves the whole purse there.
+If the [Nimble Party Loot](https://github.com/KorakaBonk/nimble-party-loot) module (1.0 or newer) is active, two more buttons appear: the box icon on a row moves that object (or part of a stack) into the party loot, and **Move all coins to party loot** moves the whole purse there.
 
 Loot goes to your assigned character. If you have none, it goes to the character token you have selected, or you are asked which of your characters should receive it.
 

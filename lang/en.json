@@ -101,7 +101,7 @@
 			"noRecipients": "Choose at least one character to share the coins with.",
 			"tooFewToSplit": "There are too few coins to give everyone at least one.",
 			"objectsOnly": "Only objects can be put into loot.",
-			"partyLootMissing": "Nimble Party Loot 2.1 or newer is not active for the GM.",
+			"partyLootMissing": "Nimble Party Loot is not active for the GM.",
 			"partyLootFailed": "Party Loot did not accept that. The GM's console has the details."
 		}
 	}

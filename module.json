@@ -2,7 +2,7 @@
 	"id": "nimble-loot-actor",
 	"title": "Nimble Loot Actor",
 	"description": "Adds a Loot actor type to the Nimble system. Fill it with objects and coins, place it on the canvas, and let players take items and coins or split the coins among the party.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"authors": [
 		{
 			"name": "KorakaBonk"
@@ -30,7 +30,7 @@
 				"type": "module",
 				"reason": "Lets loot be moved into the shared party stash.",
 				"compatibility": {
-					"minimum": "2.1.0"
+					"minimum": "1.0.0"
 				}
 			}
 		]
