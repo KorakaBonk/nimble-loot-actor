@@ -1,0 +1,20 @@
+<footer class="nimble-sheet__footer nlo-footer">
+	{{#if isGM}}
+		<span class="nlo-footer__hint">
+			<i class="fa-solid fa-circle-info" inert></i>
+			{{localize "NIMBLE_LOOT.sheet.gmHint"}}
+		</span>
+	{{else if gmOnline}}
+		{{#if lootingAs}}
+			<span class="nlo-footer__hint">
+				<i class="fa-solid fa-user" inert></i>
+				{{localize "NIMBLE_LOOT.sheet.lootingAs" name=lootingAs}}
+			</span>
+		{{/if}}
+	{{else}}
+		<span class="nlo-footer__hint nlo-footer__hint--warning">
+			<i class="fa-solid fa-triangle-exclamation" inert></i>
+			{{localize "NIMBLE_LOOT.errors.noGM"}}
+		</span>
+	{{/if}}
+</footer>

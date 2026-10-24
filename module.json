@@ -1,0 +1,67 @@
+{
+	"id": "nimble-loot-actor",
+	"title": "Nimble Loot Actor",
+	"description": "Adds a Loot actor type to the Nimble system. Fill it with objects and coins, place it on the canvas, and let players take items and coins or split the coins among the party.",
+	"version": "1.0.0",
+	"authors": [
+		{
+			"name": "KorakaBonk"
+		}
+	],
+	"compatibility": {
+		"minimum": "14",
+		"verified": "14.365",
+		"maximum": "14"
+	},
+	"relationships": {
+		"systems": [
+			{
+				"id": "nimble",
+				"type": "system",
+				"compatibility": {
+					"minimum": "0.10.0",
+					"verified": "0.10.0"
+				}
+			}
+		],
+		"recommends": [
+			{
+				"id": "nimble-party-loot",
+				"type": "module",
+				"reason": "Lets loot be moved into the shared party stash.",
+				"compatibility": {
+					"minimum": "2.1.0"
+				}
+			}
+		]
+	},
+	"documentTypes": {
+		"Actor": {
+			"loot": {
+				"htmlFields": [],
+				"filePathFields": {}
+			}
+		}
+	},
+	"esmodules": [
+		"scripts/main.js"
+	],
+	"styles": [
+		"styles/loot-actor.css"
+	],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"socket": true,
+	"url": "https://github.com/KorakaBonk/nimble-loot-actor",
+	"bugs": "https://github.com/KorakaBonk/nimble-loot-actor/issues",
+	"readme": "https://github.com/KorakaBonk/nimble-loot-actor/blob/main/README.md",
+	"changelog": "https://github.com/KorakaBonk/nimble-loot-actor/blob/main/CHANGELOG.md",
+	"license": "LICENSE",
+	"manifest": "https://github.com/KorakaBonk/nimble-loot-actor/releases/latest/download/module.json",
+	"download": "https://github.com/KorakaBonk/nimble-loot-actor/releases/latest/download/module.zip"
+}

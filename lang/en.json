@@ -1,0 +1,108 @@
+{
+	"TYPES": {
+		"Actor": {
+			"nimble-loot-actor": {
+				"loot": "Loot"
+			}
+		}
+	},
+	"NIMBLE_LOOT": {
+		"settings": {
+			"announce": {
+				"name": "Announce looting in chat",
+				"hint": "Post a chat message whenever someone takes an object or coins from a loot pile, or splits its coins among the party."
+			},
+			"singleClick": {
+				"name": "Open loot with a single click",
+				"hint": "Players open a loot token's inventory by clicking it once. When off, they double-click it instead."
+			}
+		},
+		"sheet": {
+			"label": "Nimble Loot Sheet",
+			"subtitle": "Loot · {count} objects",
+			"changeImage": "Change image",
+			"takeCoins": "Take coins",
+			"splitCoins": "Split among party",
+			"takeItem": "Take",
+			"giveItem": "Give to a character",
+			"editItem": "Edit object",
+			"deleteItem": "Delete object",
+			"quantity": "Quantity",
+			"unidentified": "Unidentified: players see its unidentified name and description",
+			"empty": "Nothing left to loot.",
+			"emptyGM": "Drop objects here from the Items directory, a compendium or a character sheet.",
+			"gmHint": "Players can loot this once its token is on a scene and not hidden.",
+			"lootingAs": "Looting as {name}",
+			"partyItem": "Move to party loot",
+			"partyCoins": "Move all coins to party loot"
+		},
+		"dialogs": {
+			"recipient": {
+				"title": "Choose a character",
+				"prompt": "Which character receives the loot?",
+				"confirm": "Choose"
+			},
+			"quantity": {
+				"title": "Take objects",
+				"prompt": "How many {item} do you take?",
+				"confirm": "Take"
+			},
+			"coins": {
+				"title": "Take coins",
+				"prompt": "How many coins do you take?",
+				"confirm": "Take"
+			},
+			"split": {
+				"title": "Split coins",
+				"prompt": "Share the coins evenly between:",
+				"hint": "Each coin type is divided on its own. Coins that do not divide evenly stay in the loot.",
+				"confirm": "Split"
+			},
+			"partyQuantity": {
+				"title": "Move to party loot",
+				"prompt": "How many {item} go into the party loot?",
+				"confirm": "Move"
+			}
+		},
+		"chat": {
+			"coinsTitle": "Coins taken",
+			"splitTitle": "Coins shared",
+			"tookItem": "{character} took {item} from {loot}.",
+			"tookCoins": "{character} took coins from {loot}:",
+			"splitCoins": "The coins from {loot} were split between {count} characters. Each received:",
+			"splitLeftover": "Left in the loot:",
+			"partyTitle": "Moved to the party loot",
+			"partyItem": "{character} moved {item} from {loot} into the party loot.",
+			"partyCoins": "{character} moved the coins from {loot} into the party loot:",
+			"fromLoot": "From {loot}",
+			"partyCoinsTitle": "Coins to the party loot",
+			"gm": {
+				"coinsTitle": "Coins handed out",
+				"tookItem": "Gamemaster handed {item} to {character} from {loot}.",
+				"tookCoins": "Gamemaster handed coins to {character} from {loot}:",
+				"splitCoins": "Gamemaster split the coins from {loot} between {count} characters. Each received:",
+				"partyItem": "Gamemaster moved {item} from {loot} into the party loot.",
+				"partyCoins": "Gamemaster moved the coins from {loot} into the party loot:"
+			}
+		},
+		"errors": {
+			"noGM": "A GM must be online to take loot.",
+			"timeout": "The GM did not answer in time. Is a GM still online?",
+			"failed": "Taking the loot failed. The GM's console has the details.",
+			"unknownAction": "Unknown loot action.",
+			"unknownUser": "Unknown user.",
+			"lootGone": "That loot no longer exists.",
+			"cannotLoot": "You cannot reach that loot.",
+			"itemGone": "That object is no longer in the loot.",
+			"badRecipient": "Loot can only go to a character.",
+			"notYourCharacter": "You do not own that character.",
+			"noCharacter": "You have no character to take the loot.",
+			"noCoins": "There are no coins to take.",
+			"noRecipients": "Choose at least one character to share the coins with.",
+			"tooFewToSplit": "There are too few coins to give everyone at least one.",
+			"objectsOnly": "Only objects can be put into loot.",
+			"partyLootMissing": "Nimble Party Loot 2.1 or newer is not active for the GM.",
+			"partyLootFailed": "Party Loot did not accept that. The GM's console has the details."
+		}
+	}
+}

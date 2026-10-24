@@ -1,0 +1,112 @@
+<section class="nimble-sheet__body nlo-body">
+	{{#each groups}}
+		<div class="nlo-group">
+			<header>
+				<h3 class="nimble-heading" data-heading-variant="section">{{label}}</h3>
+			</header>
+
+			<ul class="nlo-item-list">
+				{{#each items}}
+					<li
+						class="nimble-document-card nlo-row{{#if unidentified}} nlo-row--unidentified{{/if}}{{#if @root.editable}} draggable{{/if}}"
+						data-item-id="{{id}}"
+						{{#if @root.editable}}draggable="true"{{/if}}
+					>
+						<div class="nimble-document-card__img-wrapper">
+							<img class="nimble-document-card__img" src="{{img}}" alt="" draggable="false" />
+						</div>
+
+						<h4
+							class="nimble-document-card__name nimble-heading nlo-row__name"
+							data-heading-variant="item"
+							data-tooltip="{{tooltip}}"
+							data-tooltip-class="nimble-tooltip nimble-tooltip--item"
+							data-tooltip-direction="LEFT"
+						>
+							<span class="nlo-row__label">{{name}}</span>
+							{{#if showUnidentifiedFlag}}
+								<i
+									class="fa-solid fa-eye-slash nlo-row__flag"
+									data-tooltip="{{localize 'NIMBLE_LOOT.sheet.unidentified'}}"
+								></i>
+							{{/if}}
+						</h4>
+
+						{{#if @root.editable}}
+							<input
+								class="nimble-document-card__quantity nlo-row__quantity"
+								type="number"
+								value="{{rawQuantity}}"
+								min="0"
+								step="1"
+								data-item-quantity
+								aria-label="{{localize 'NIMBLE_LOOT.sheet.quantity'}}"
+							/>
+						{{else}}
+							<span class="nlo-row__quantity nlo-row__quantity--static">×{{quantity}}</span>
+						{{/if}}
+
+						{{#if @root.canLoot}}
+							<button
+								type="button"
+								class="nimble-button nlo-row__take"
+								data-button-variant="icon"
+								data-action="takeItem"
+								data-loot-action
+								data-tooltip="{{#if @root.isGM}}{{localize 'NIMBLE_LOOT.sheet.giveItem'}}{{else}}{{localize 'NIMBLE_LOOT.sheet.takeItem'}}{{/if}}"
+								aria-label="{{localize 'NIMBLE_LOOT.sheet.takeItem'}}"
+							>
+								<i class="fa-solid fa-hand-holding" inert></i>
+							</button>
+							{{#if @root.partyLoot}}
+								<button
+									type="button"
+									class="nimble-button nlo-row__party"
+									data-button-variant="icon"
+									data-action="partyItem"
+									data-loot-action
+									data-tooltip="{{localize 'NIMBLE_LOOT.sheet.partyItem'}}"
+									aria-label="{{localize 'NIMBLE_LOOT.sheet.partyItem'}}"
+								>
+									<i class="fa-solid fa-box-archive" inert></i>
+								</button>
+							{{/if}}
+						{{/if}}
+
+						{{#if @root.editable}}
+							<button
+								type="button"
+								class="nimble-button"
+								style="grid-area: configureButton"
+								data-button-variant="icon"
+								data-action="editLootItem"
+								aria-label="{{localize 'NIMBLE_LOOT.sheet.editItem'}}"
+							>
+								<i class="fa-solid fa-edit" inert></i>
+							</button>
+							<button
+								type="button"
+								class="nimble-button"
+								style="grid-area: deleteButton"
+								data-button-variant="icon"
+								data-action="deleteLootItem"
+								aria-label="{{localize 'NIMBLE_LOOT.sheet.deleteItem'}}"
+							>
+								<i class="fa-solid fa-trash" inert></i>
+							</button>
+						{{/if}}
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	{{else}}
+		<div class="nlo-empty">
+			<i class="fa-solid fa-box-open" inert></i>
+			{{#if editable}}
+				<p>{{localize "NIMBLE_LOOT.sheet.emptyGM"}}</p>
+			{{else}}
+				<p>{{localize "NIMBLE_LOOT.sheet.empty"}}</p>
+			{{/if}}
+		</div>
+	{{/each}}
+</section>

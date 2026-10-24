@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" preserveAspectRatio="xMidYMid slice">
+	<defs>
+		<radialGradient id="glow" cx="50%" cy="58%" r="62%">
+			<stop offset="0" stop-color="#f6c75a" stop-opacity="0.85"/>
+			<stop offset="0.35" stop-color="#9a5a22" stop-opacity="0.55"/>
+			<stop offset="1" stop-color="#1b1310" stop-opacity="0"/>
+		</radialGradient>
+		<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#2a2233"/>
+			<stop offset="1" stop-color="#140f12"/>
+		</linearGradient>
+		<linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#8a4f26"/>
+			<stop offset="1" stop-color="#4e2a14"/>
+		</linearGradient>
+		<linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#9c5c2c"/>
+			<stop offset="1" stop-color="#5a3018"/>
+		</linearGradient>
+		<linearGradient id="iron" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#c9b48a"/>
+			<stop offset="0.5" stop-color="#7a6a4c"/>
+			<stop offset="1" stop-color="#3d3426"/>
+		</linearGradient>
+		<radialGradient id="gold" cx="40%" cy="35%" r="70%">
+			<stop offset="0" stop-color="#fff6c4"/>
+			<stop offset="0.45" stop-color="#f2cf3a"/>
+			<stop offset="1" stop-color="#a87a0e"/>
+		</radialGradient>
+		<radialGradient id="silver" cx="40%" cy="35%" r="70%">
+			<stop offset="0" stop-color="#ffffff"/>
+			<stop offset="0.5" stop-color="#c9c9c9"/>
+			<stop offset="1" stop-color="#7c7c7c"/>
+		</radialGradient>
+		<radialGradient id="copper" cx="40%" cy="35%" r="70%">
+			<stop offset="0" stop-color="#fbe7c8"/>
+			<stop offset="0.5" stop-color="#d9a04a"/>
+			<stop offset="1" stop-color="#8a5a1c"/>
+		</radialGradient>
+		<g id="coin"><ellipse rx="13" ry="6"/><ellipse rx="9" ry="3.6" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="1.2"/></g>
+	</defs>
+
+	<rect width="500" height="360" fill="url(#bg)"/>
+	<rect width="500" height="360" fill="url(#glow)"/>
+
+	<!-- floor -->
+	<ellipse cx="250" cy="292" rx="210" ry="34" fill="#000" opacity="0.35"/>
+
+	<!-- open lid -->
+	<path d="M150 170 L170 92 Q250 62 330 92 L350 170 Z" fill="url(#lid)" stroke="#2e1a0d" stroke-width="3"/>
+	<path d="M163 150 L178 98 Q250 72 322 98 L337 150 Z" fill="#2b170c" opacity="0.55"/>
+	<path d="M170 92 Q250 62 330 92" fill="none" stroke="url(#iron)" stroke-width="9"/>
+	<rect x="236" y="70" width="28" height="100" fill="url(#iron)" opacity="0.9"/>
+
+	<!-- treasure heap -->
+	<path d="M150 184 Q175 132 215 142 Q245 118 275 140 Q318 126 350 184 Z" fill="url(#gold)"/>
+	<g fill="url(#gold)">
+		<use href="#coin" x="196" y="152"/>
+		<use href="#coin" x="232" y="138"/>
+		<use href="#coin" x="270" y="146"/>
+		<use href="#coin" x="306" y="160"/>
+		<use href="#coin" x="250" y="160"/>
+	</g>
+	<g fill="url(#silver)">
+		<use href="#coin" x="214" y="164"/>
+		<use href="#coin" x="288" y="170"/>
+	</g>
+	<g fill="url(#copper)"><use href="#coin" x="262" y="128"/></g>
+	<!-- gem -->
+	<path d="M222 120 l12 -10 l12 10 l-12 18 z" fill="#c2384a" stroke="#6e1222" stroke-width="2"/>
+	<path d="M222 120 l12 -10 l4 10 z" fill="#ff8c9a" opacity="0.7"/>
+
+	<!-- chest body -->
+	<rect x="146" y="176" width="208" height="104" rx="6" fill="url(#wood)" stroke="#2e1a0d" stroke-width="3"/>
+	<path d="M146 214 H354 M146 250 H354" stroke="#3a2010" stroke-width="2" opacity="0.6"/>
+	<rect x="146" y="176" width="208" height="14" fill="url(#iron)"/>
+	<rect x="160" y="176" width="16" height="104" fill="url(#iron)" opacity="0.9"/>
+	<rect x="324" y="176" width="16" height="104" fill="url(#iron)" opacity="0.9"/>
+	<rect x="232" y="196" width="36" height="42" rx="5" fill="url(#iron)" stroke="#2e2618" stroke-width="2"/>
+	<circle cx="250" cy="212" r="5" fill="#1d160e"/>
+	<path d="M247 214 h6 l-1 12 h-4 z" fill="#1d160e"/>
+
+	<!-- spilled coins -->
+	<g fill="url(#gold)">
+		<use href="#coin" x="120" y="284"/>
+		<use href="#coin" x="138" y="296"/>
+		<use href="#coin" x="372" y="290"/>
+		<use href="#coin" x="398" y="280"/>
+	</g>
+	<g fill="url(#silver)">
+		<use href="#coin" x="104" y="298"/>
+		<use href="#coin" x="384" y="302"/>
+	</g>
+	<g fill="url(#copper)">
+		<use href="#coin" x="152" y="306"/>
+		<use href="#coin" x="356" y="306"/>
+		<use href="#coin" x="414" y="296"/>
+	</g>
+
+	<!-- sparkles -->
+	<g fill="#fff3c0">
+		<path d="M300 100 l3 10 l10 3 l-10 3 l-3 10 l-3 -10 l-10 -3 l10 -3 z" opacity="0.9"/>
+		<path d="M192 112 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 z" opacity="0.8"/>
+		<path d="M360 140 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 z" opacity="0.7"/>
+	</g>
+</svg>

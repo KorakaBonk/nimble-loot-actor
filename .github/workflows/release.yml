@@ -1,0 +1,57 @@
+name: Release
+
+# Push a tag such as v1.0.0 (or publish a release for one) to build the
+# module and attach module.json and module.zip to the GitHub release.
+on:
+  push:
+    tags: ['v*']
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.release.tag_name || github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Test
+        run: npm test && npm run check
+
+      - name: Check the tag matches module.json
+        run: |
+          VERSION="$(jq -r .version module.json)"
+          if [ "v$VERSION" != "$TAG" ]; then
+            echo "::error::Tag $TAG does not match module.json version $VERSION"
+            exit 1
+          fi
+
+      - name: Point the download at this release
+        run: |
+          jq --arg d "https://github.com/${{ github.repository }}/releases/download/${TAG}/module.zip" \
+             '.download = $d' module.json > module.tmp && mv module.tmp module.json
+
+      - name: Package
+        run: zip -r module.zip module.json scripts templates styles lang assets README.md CHANGELOG.md LICENSE
+
+      - name: Create the release if needed and upload assets
+        run: |
+          if ! gh release view "$TAG" > /dev/null 2>&1; then
+            NOTES="$(awk -v v="${TAG#v}" '$0 == "## " v {f=1; next} /^## /{f=0} f' CHANGELOG.md)"
+            gh release create "$TAG" --title "$TAG" --notes "$NOTES" --verify-tag
+          fi
+          gh release upload "$TAG" module.json module.zip --clobber

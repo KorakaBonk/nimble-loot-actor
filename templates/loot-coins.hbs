@@ -1,0 +1,60 @@
+<section class="nimble-sheet__static nlo-coins">
+	<div class="nlo-coins__purse">
+		{{#each coins}}
+			<label class="nlo-coin-field">
+				<h4 class="nimble-heading" data-heading-variant="section">
+					{{label}}
+					<span class="nlo-coin nlo-coin--{{key}}"></span>
+				</h4>
+				{{#if @root.editable}}
+					<input class="nlo-coin-field__input" type="number" name="{{field}}" value="{{value}}" min="0" step="1" />
+				{{else}}
+					<span class="nlo-coin-field__value">{{value}}</span>
+				{{/if}}
+			</label>
+		{{/each}}
+	</div>
+
+	{{#if canLoot}}
+		<div class="nlo-coins__actions">
+			<button
+				type="button"
+				class="nimble-button"
+				data-button-variant="basic"
+				data-action="takeCoins"
+				data-loot-action
+				data-loot-disabled="{{#if hasCoins}}false{{else}}true{{/if}}"
+				{{#unless hasCoins}}disabled{{/unless}}
+			>
+				<i class="fa-solid fa-hand-holding-dollar" inert></i>
+				{{localize "NIMBLE_LOOT.sheet.takeCoins"}}
+			</button>
+			<button
+				type="button"
+				class="nimble-button"
+				data-button-variant="secondary"
+				data-action="splitCoins"
+				data-loot-action
+				data-loot-disabled="{{#if hasCoins}}false{{else}}true{{/if}}"
+				{{#unless hasCoins}}disabled{{/unless}}
+			>
+				<i class="fa-solid fa-scale-balanced" inert></i>
+				{{localize "NIMBLE_LOOT.sheet.splitCoins"}}
+			</button>
+			{{#if partyLoot}}
+				<button
+					type="button"
+					class="nimble-button nlo-coins__party"
+					data-button-variant="secondary"
+					data-action="partyCoins"
+					data-loot-action
+					data-loot-disabled="{{#if hasCoins}}false{{else}}true{{/if}}"
+					{{#unless hasCoins}}disabled{{/unless}}
+				>
+					<i class="fa-solid fa-box-archive" inert></i>
+					{{localize "NIMBLE_LOOT.sheet.partyCoins"}}
+				</button>
+			{{/if}}
+		</div>
+	{{/if}}
+</section>

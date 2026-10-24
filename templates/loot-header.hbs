@@ -1,0 +1,38 @@
+<header class="nimble-sheet__header nlo-header">
+	{{#if editable}}
+		<button
+			type="button"
+			class="nimble-icon__button nlo-header__portrait"
+			data-action="editLootImage"
+			data-tooltip="{{localize 'NIMBLE_LOOT.sheet.changeImage'}}"
+			aria-label="{{localize 'NIMBLE_LOOT.sheet.changeImage'}}"
+		>
+			<img class="nlo-header__img" src="{{actor.img}}" alt="{{actor.name}}" draggable="false" />
+		</button>
+	{{else}}
+		<div class="nimble-icon__button nlo-header__portrait">
+			<img class="nlo-header__img" src="{{actor.img}}" alt="{{actor.name}}" draggable="false" />
+		</div>
+	{{/if}}
+
+	<div class="nlo-header__titles">
+		{{#if editable}}
+			<input
+				class="nimble-heading nlo-header__name"
+				data-heading-variant="document"
+				type="text"
+				name="name"
+				value="{{actor.name}}"
+				autocomplete="off"
+				spellcheck="false"
+			/>
+		{{else}}
+			<h2 class="nimble-heading nlo-header__name" data-heading-variant="document">{{actor.name}}</h2>
+		{{/if}}
+
+		<h4 class="nlo-header__meta">
+			<i class="fa-solid fa-sack-dollar" inert></i>
+			{{localize "NIMBLE_LOOT.sheet.subtitle" count=itemCount}}
+		</h4>
+	</div>
+</header>
